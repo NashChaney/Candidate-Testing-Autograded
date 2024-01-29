@@ -62,12 +62,13 @@ for (let i = 0; i < questions.length; i++) {
  
   grade = (candidateScore / questions.length) * 100;
   
-  console.log(`>>> Overall Grade: ${grade}% (${candidateScore} out of ${totalQuestions} responses correct) <<<`);
+  console.log(`Your Score: ${grade}%
+   ${candidateScore} out of ${totalQuestions} responses correct!`);
 
   if (grade >= passingGrade) {
-    console.log(">>> Status: PASSED");
+    console.log("Congratulations, You've Passed the Quiz!");
   } else {
-    console.log(">>> Status: FAILED");
+    console.log("Quiz Failed");
   }
 
   return grade;
