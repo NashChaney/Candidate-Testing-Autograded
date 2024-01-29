@@ -4,8 +4,8 @@ const input = require('readline-sync');
 // TODO 1.1a: Define candidateName // 
 let candidateName = "";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question = "";
-let correctAnswer = "";
+let question = "Who was the first American woman in space? ";
+let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
 
 //TODO: Variables for Part 2
@@ -16,7 +16,7 @@ let questions = [
   "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
   "What is the minimum crew size for the ISS? "
   ];
-let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", 3];
+let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
 
 
@@ -45,15 +45,34 @@ for (let i = 0; i < questions.length; i++) {
   candidateResponse = candidateAnswers[i];
   correctAnswer = correctAnswers[i];
 
-  console.log(`Question: ${currentQuestion}. Candidate's Response: ${candidateResponse}Correct Answer: ${correctAnswer}`);
+  console.log(`Question: ${currentQuestion} \n Candidate's Response: ${candidateResponse} \n Correct Answer: ${correctAnswer}`);
 }
+//TODO 3.2 use this variable to calculate the candidates score.
+  
+  let candidateScore = 0; 
+  let grade;
+  let passingGrade = 80;
+  let totalQuestions = 5
 
+  for (let i = 0; i < totalQuestions; i++) {
+    if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()) {
+      candidateScore += 1;
+  }
+  }
+ 
+  grade = (candidateScore / questions.length) * 100;
+  
+  console.log(`>>> Overall Grade: ${grade}% (${candidateScore} out of ${totalQuestions} responses correct) <<<`);
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  if (grade >= passingGrade) {
+    console.log(">>> Status: PASSED");
+  } else {
+    console.log(">>> Status: FAILED");
+  }
 
   return grade;
 }
+
 
 function runProgram() {
   askForName();
